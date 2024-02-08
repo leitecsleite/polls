@@ -31,13 +31,13 @@ model PollOption {
 }
 
 model Vote {
-  id            Int      @id @default(autoincrement())
-  sessionId     String
-  pollOptioinId String
-  pollId        String
-  createAd      DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  sessionId    String
+  pollOptionId String
+  pollId       String
+  createAd     DateTime @default(now())
 
-  pollOption PollOption @relation(fields: [pollOptioinId], references: [id])
+  pollOption PollOption @relation(fields: [pollOptionId], references: [id])
   poll       Poll       @relation(fields: [pollId], references: [id])
 
   @@unique([sessionId, pollId])
